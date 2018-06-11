@@ -1,5 +1,5 @@
 dump:
-	mysqldump -u root -p -d heads_up_db > db.dump
+	mysqldump -u root -p -d prova_web2 > db.dump
 
 restore:
-	mysql -u root -p -D heads_up_db < db.dump
+	mysql -u root -p -D prova_web2 < db.dump
