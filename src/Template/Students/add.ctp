@@ -17,10 +17,10 @@
     <fieldset>
         <legend><?= __('Add Student') ?></legend>
         <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('email');
-            echo $this->Form->control('username');
-            echo $this->Form->control('role');
+            echo $this->Form->control('name',['label' => 'Nome']);
+            echo $this->Form->control('email',['label' => 'Email']);
+            echo $this->Form->control('username',['label' => 'Usuário']);
+            echo $this->Form->control('role',['label' => 'Aluno']);
             echo $this->Form->control('monitors._ids', ['options' => $monitors]);
         ?>
     </fieldset>
