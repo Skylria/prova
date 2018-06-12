@@ -4,12 +4,15 @@
  * @var \App\Model\Entity\Monitor[]|\Cake\Collection\CollectionInterface $monitors
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<nav class="large-3 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Monitor'), ['action' => 'add']) ?></li>
+        <!-- <li class="heading"><?= __('Actions') ?></li> -->
+        <!-- <li><?= $this->Html->link(__('New Monitor'), ['action' => 'add']) ?></li> 
+            O monitor será cadastrado colocando o add na url só, não há necessidade de mostrar na página um cadastro de novo monitor pro próprio monitor
+        -->
         <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?></li>
+
+        <!-- <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?></li> -->
     </ul>
 </nav>
 <div class="monitors index large-9 medium-8 columns content">
@@ -17,14 +20,23 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+<<<<<<< HEAD
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('discipline') ?></th>
+                <!--<th scope="col"><?= $this->Paginator->sort('role') ?></th>
+=======
                 <!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
                 <th scope="col"><?= $this->Paginator->sort('name',['label' => 'Nome']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email',['label' => 'Email']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('username',['label' => 'Usuário']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discipline',['label' => 'Disciplina']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('role',['label' => 'Monitor']) ?></th>
+>>>>>>> 14bd63bd8987b6b840ed2e76adf4f99a77101c0d
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th> -->
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -42,7 +54,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $monitor->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $monitor->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $monitor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $monitor->id)]) ?>
+                    <!-- <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $monitor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $monitor->id)]) ?> -->
                 </td>
             </tr>
             <?php endforeach; ?>
