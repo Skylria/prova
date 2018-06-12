@@ -317,9 +317,9 @@ pre {
     color: red;
     margin-right: 9px;
 }
-
-.top-bar.expanded .title-area {
-    background: #01545b;
+.title-area {
+    background: #116d76;
+    text-align: center;
 }
 
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
