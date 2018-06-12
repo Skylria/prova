@@ -21,7 +21,8 @@
             echo $this->Form->control('email',['label' => 'Email']);
             echo $this->Form->control('username',['label' => 'Usuário']);
             echo $this->Form->control('discipline',['label' => 'Disciplina']);
-            echo $this->Form->control('role',['label' => 'Monitor']);
+            echo $this->Form->control('role', [
+                'options' => ['monitors' => 'Monitors', 'students' => 'Students'] ]);
             echo $this->Form->control('students._ids', ['options' => $students]);
         ?>
     </fieldset>

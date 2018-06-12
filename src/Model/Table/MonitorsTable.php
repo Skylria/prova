@@ -22,8 +22,7 @@ use Cake\Validation\Validator;
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class MonitorsTable extends Table
-{
+class MonitorsTable extends Table {
 
     /**
      * Initialize method
@@ -31,8 +30,7 @@ class MonitorsTable extends Table
      * @param array $config The configuration for the Table.
      * @return void
      */
-    public function initialize(array $config)
-    {
+    public function initialize(array $config) {
         parent::initialize($config);
 
         $this->setTable('monitors');
@@ -54,8 +52,7 @@ class MonitorsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
-    {
+    public function validationDefault(Validator $validator) {
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
@@ -87,7 +84,10 @@ class MonitorsTable extends Table
             ->scalar('role')
             ->maxLength('role', 20)
             ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->notEmpty('role')
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['monitors', 'students']],
+                'message' => 'Por favor entre com um papel válido!'])
 
         return $validator;
     }

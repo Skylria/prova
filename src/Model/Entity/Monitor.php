@@ -2,6 +2,8 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Event\Event;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Monitor Entity
@@ -39,4 +41,9 @@ class Monitor extends Entity
         'modified' => true,
         'students' => true
     ];
+
+    protected function _setPassword($password) {
+        return (new DefaultPasswordHasher)->hash($password);
+    }
+    
 }

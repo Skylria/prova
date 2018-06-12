@@ -54,6 +54,7 @@ class MonitorsStudentsController extends AppController
         $monitorsStudent = $this->MonitorsStudents->newEntity();
         if ($this->request->is('post')) {
             $monitorsStudent = $this->MonitorsStudents->patchEntity($monitorsStudent, $this->request->getData());
+            /*$monitorsStudent->monitor_id = $this->Auth->user('id');*/
             if ($this->MonitorsStudents->save($monitorsStudent)) {
                 $this->Flash->success(__('The monitors student has been saved.'));
 
