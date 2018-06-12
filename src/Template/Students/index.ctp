@@ -17,11 +17,11 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('role') ?></th>
+                <!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
+                <th scope="col"><?= $this->Paginator->sort('name',['label' => 'Nome']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email',['label' => 'Email']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username',['label' => 'Usuário']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('role',['label' => 'Aluno']) ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -30,7 +30,7 @@
         <tbody>
             <?php foreach ($students as $student): ?>
             <tr>
-                <td><?= $this->Number->format($student->id) ?></td>
+                <!-- <td><?= $this->Number->format($student->id) ?></td> -->
                 <td><?= h($student->name) ?></td>
                 <td><?= h($student->email) ?></td>
                 <td><?= h($student->username) ?></td>
