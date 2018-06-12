@@ -69,5 +69,17 @@ class AppController extends Controller
     public function beforeFilter(Event $event) {
         $this->Students->allow(['index', 'view', 'display']);
     }
+
+    public function isAuthorized($monitor) {
+        // Admin can access every action
+        if (isset($monitor['role']) && $monitor['role'] === 'monitors') {
+            return true;
+        }
+        // Default deny
+        return false;
+    }
+
 }
+
+
 

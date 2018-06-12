@@ -54,7 +54,8 @@ class MonitorsStudentsController extends AppController
         $monitorsStudent = $this->MonitorsStudents->newEntity();
         if ($this->request->is('post')) {
             $monitorsStudent = $this->MonitorsStudents->patchEntity($monitorsStudent, $this->request->getData());
-            /*$monitorsStudent->monitor_id = $this->Auth->user('id');*/
+            $monitorsStudent->monitor_id = $this->Monitors->user('id');
+            $monitorsStudent->student_id = $this->Students->user('id');
             if ($this->MonitorsStudents->save($monitorsStudent)) {
                 $this->Flash->success(__('The monitors student has been saved.'));
 
@@ -112,4 +113,19 @@ class MonitorsStudentsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user) {
+        if ($this->request->action === 'add') {
+            return true;
+        }
+        if (in_array($this->request->action, ['edit', 'delete'])) {
+            $articleId = (int)$this->request->params['pass'][0];
+            if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
+                return true;
+            }
+        }
+        return parent::isAuthorized($user);
+    }
+
+
 }
