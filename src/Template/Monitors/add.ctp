@@ -17,11 +17,11 @@
     <fieldset>
         <legend><?= __('Add Monitor') ?></legend>
         <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('email');
-            echo $this->Form->control('username');
-            echo $this->Form->control('discipline');
-            echo $this->Form->control('role');
+            echo $this->Form->control('name',['label' => 'Nome']);
+            echo $this->Form->control('email',['label' => 'Email']);
+            echo $this->Form->control('username',['label' => 'Usuário']);
+            echo $this->Form->control('discipline',['label' => 'Disciplina']);
+            echo $this->Form->control('role',['label' => 'Monitor']);
             echo $this->Form->control('students._ids', ['options' => $students]);
         ?>
     </fieldset>

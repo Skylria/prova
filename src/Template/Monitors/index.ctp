@@ -20,12 +20,21 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
+<<<<<<< HEAD
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('username') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discipline') ?></th>
                 <!--<th scope="col"><?= $this->Paginator->sort('role') ?></th>
+=======
+                <!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
+                <th scope="col"><?= $this->Paginator->sort('name',['label' => 'Nome']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email',['label' => 'Email']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username',['label' => 'Usuário']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('discipline',['label' => 'Disciplina']) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('role',['label' => 'Monitor']) ?></th>
+>>>>>>> 14bd63bd8987b6b840ed2e76adf4f99a77101c0d
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th> -->
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -34,7 +43,7 @@
         <tbody>
             <?php foreach ($monitors as $monitor): ?>
             <tr>
-                <td><?= $this->Number->format($monitor->id) ?></td>
+                <!-- <td><?= $this->Number->format($monitor->id) ?></td> -->
                 <td><?= h($monitor->name) ?></td>
                 <td><?= h($monitor->email) ?></td>
                 <td><?= h($monitor->username) ?></td>
