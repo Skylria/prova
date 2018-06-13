@@ -114,17 +114,17 @@ class MonitorsStudentsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function isAuthorized($user) {
+    public function isAuthorized($monitor) {
         if ($this->request->action === 'add') {
             return true;
         }
         if (in_array($this->request->action, ['edit', 'delete'])) {
-            $articleId = (int)$this->request->params['pass'][0];
-            if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
+            $monitorsStudentId = (int)$this->request->params['pass'][0];
+            if ($this->MonitorsStudents->isOwnedBy($monitorsStudentId, $monitor['id'])) {
                 return true;
             }
         }
-        return parent::isAuthorized($user);
+        return parent::isAuthorized($monitor);
     }
 
 
