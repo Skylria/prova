@@ -1,0 +1,41 @@
+DROP TABLE IF EXISTS `monitors`;
+
+CREATE TABLE `monitors` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `discipline` varchar(50) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL
+);
+
+DROP TABLE IF EXISTS `students`;
+
+CREATE TABLE `students` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  constraint id_pk PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `monitors_students`;
+
+CREATE TABLE `monitors_students` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `monitor_id` int(10) unsigned NOT NULL,
+  `student_id` int(10) unsigned NOT NULL,
+  `start_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  `status` varchar(10) NOT NULL check(status IN('pendent','realizado','aluno faltou','cancelado')),
+  `role` varchar(20) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  constraint FOREIGN KEY (`monitor_id`) references monitors(id),
+  constraint FOREIGN KEY (`student_id`) references students(id)
+);
