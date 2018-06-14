@@ -28,7 +28,6 @@ CREATE TABLE `monitors_students` (
   constraint FOREIGN KEY (`monitor_id`) references monitor(id),
   constraint FOREIGN KEY (`student_id`) references students(id)
 );
-
 DROP TABLE IF EXISTS `students`;
 
 CREATE TABLE `students` (
