@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\Email;
 
 /**
  * MonitorsStudents Controller
@@ -57,6 +58,11 @@ class MonitorsStudentsController extends AppController
             $article->user_id = $this->Student->user('id');
             if ($this->MonitorsStudents->save($monitorsStudent)) {
                 $this->Flash->success(__('The monitors student has been saved.'));
+                $email = new Email('default');
+                $email->from(['testezerozerosete@gmail.com' => 'Meu Site'])
+                ->to('testezerozerosete@gmail.com')
+                ->subject('Assunto')
+                ->send('ola');
 
                 return $this->redirect(['action' => 'index']);
             }
