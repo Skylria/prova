@@ -1,5 +1,5 @@
 <div class="users form">
-<?= $this->Flash->render('student') ?>
+<?= $this->Flash->render('auth') ?>
 <?= $this->Form->create() ?>
 	<fieldset>
 		<legend><?= __('Por favor, entre com seu usuário e senha:') ?></legend>

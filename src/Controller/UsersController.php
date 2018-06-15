@@ -108,22 +108,22 @@ class UsersController extends AppController
 
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Student->allow(['add', 'logout']);
+        $this->Auth->allow(['add', 'logout']);
     }
 
     public function login() {
         if ($this->request->is('post')) {
-            $user = $this->Student->identify();
+            $user = $this->Auth->identify();
             if ($user) {
-                $this->Student->setUser($user);
-                return $this->redirect($this->Student->redirectUrl());
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Usuário inválido, tente novamente'));
         }
     }
 
     public function logout() {
-        return $this->redirect($this->Student->logout());
+        return $this->redirect($this->Auth->logout());
     }
 
 }

@@ -46,7 +46,7 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
 
-        $this->loadComponent('Student', [
+        $this->loadComponent('Auth', [
             'authorize' => ['Controller'],
             'loginRedirect' => [
                 'controller' => 'MonitorsStudents',
@@ -67,7 +67,7 @@ class AppController extends Controller
     }
 
     public function beforeFilter(Event $event) {
-        $this->Student->allow(['index', 'view', 'display']);
+        $this->Auth->allow(['index', 'view', 'display']);
     }
 
     public function isAuthorized($user) {
