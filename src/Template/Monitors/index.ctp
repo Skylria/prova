@@ -8,8 +8,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Monitor'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="monitors index large-9 medium-8 columns content">
@@ -18,14 +18,9 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discipline') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('role') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -33,14 +28,9 @@
             <?php foreach ($monitors as $monitor): ?>
             <tr>
                 <td><?= $this->Number->format($monitor->id) ?></td>
-                <td><?= h($monitor->name) ?></td>
+                <td><?= $this->Number->format($monitor->user_id) ?></td>
                 <td><?= h($monitor->email) ?></td>
-                <td><?= h($monitor->username) ?></td>
-                <td><?= h($monitor->password) ?></td>
                 <td><?= h($monitor->discipline) ?></td>
-                <td><?= h($monitor->role) ?></td>
-                <td><?= h($monitor->created) ?></td>
-                <td><?= h($monitor->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $monitor->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $monitor->id]) ?>

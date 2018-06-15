@@ -11,58 +11,36 @@
         <li><?= $this->Form->postLink(__('Delete Monitor'), ['action' => 'delete', $monitor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $monitor->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Monitors'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Monitor'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Students'), ['controller' => 'Students', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Student'), ['controller' => 'Students', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="monitors view large-9 medium-8 columns content">
     <h3><?= h($monitor->name) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($monitor->name) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Email') ?></th>
             <td><?= h($monitor->email) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Username') ?></th>
-            <td><?= h($monitor->username) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Password') ?></th>
-            <td><?= h($monitor->password) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Discipline') ?></th>
             <td><?= h($monitor->discipline) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Role') ?></th>
-            <td><?= h($monitor->role) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($monitor->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($monitor->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($monitor->modified) ?></td>
+            <th scope="row"><?= __('User Id') ?></th>
+            <td><?= $this->Number->format($monitor->user_id) ?></td>
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Students') ?></h4>
-        <?php if (!empty($monitor->students)): ?>
+        <h4><?= __('Related Users') ?></h4>
+        <?php if (!empty($monitor->users)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Name') ?></th>
-                <th scope="col"><?= __('Email') ?></th>
                 <th scope="col"><?= __('Username') ?></th>
                 <th scope="col"><?= __('Password') ?></th>
                 <th scope="col"><?= __('Role') ?></th>
@@ -70,20 +48,18 @@
                 <th scope="col"><?= __('Modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
-            <?php foreach ($monitor->students as $students): ?>
+            <?php foreach ($monitor->users as $users): ?>
             <tr>
-                <td><?= h($students->id) ?></td>
-                <td><?= h($students->name) ?></td>
-                <td><?= h($students->email) ?></td>
-                <td><?= h($students->username) ?></td>
-                <td><?= h($students->password) ?></td>
-                <td><?= h($students->role) ?></td>
-                <td><?= h($students->created) ?></td>
-                <td><?= h($students->modified) ?></td>
+                <td><?= h($users->id) ?></td>
+                <td><?= h($users->username) ?></td>
+                <td><?= h($users->password) ?></td>
+                <td><?= h($users->role) ?></td>
+                <td><?= h($users->created) ?></td>
+                <td><?= h($users->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Students', 'action' => 'view', $students->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Students', 'action' => 'edit', $students->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Students', 'action' => 'delete', $students->id], ['confirm' => __('Are you sure you want to delete # {0}?', $students->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

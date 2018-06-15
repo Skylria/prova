@@ -9,6 +9,9 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property |\Cake\ORM\Association\HasMany $Monitors
+ * @property |\Cake\ORM\Association\BelongsToMany $Monitors
+ *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -38,6 +41,15 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Monitors', [
+            'foreignKey' => 'user_id'
+        ]);
+        $this->belongsToMany('Monitors', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'monitor_id',
+            'joinTable' => 'monitors_users'
+        ]);
     }
 
     /**
@@ -69,9 +81,9 @@ class UsersTable extends Table
             ->maxLength('role', 20)
             ->requirePresence('role', 'create')
             ->notEmpty('role')
-            add('role', 'inList', [
-                'rule' => ['inList', ['monitor', 'student']],
-                'message' => 'Por favor entre com um papel válido!'])
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['monitor', 'users']],
+                'message' => 'Por favor entre com um papel válido!']);
 
         return $validator;
     }

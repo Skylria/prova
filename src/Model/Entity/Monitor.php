@@ -7,16 +7,11 @@ use Cake\ORM\Entity;
  * Monitor Entity
  *
  * @property int $id
- * @property string $name
+ * @property int $user_id
  * @property string $email
- * @property string $username
- * @property string $password
  * @property string $discipline
- * @property string $role
- * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\Student[] $students
+ * @property \App\Model\Entity\User[] $users
  */
 class Monitor extends Entity
 {
@@ -31,23 +26,9 @@ class Monitor extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
+        'user_id' => true,
         'email' => true,
-        'username' => true,
-        'password' => true,
         'discipline' => true,
-        'role' => true,
-        'created' => true,
-        'modified' => true,
-        'students' => true
-    ];
-
-    /**
-     * Fields that are excluded from JSON versions of the entity.
-     *
-     * @var array
-     */
-    protected $_hidden = [
-        'password'
+        'users' => true
     ];
 }

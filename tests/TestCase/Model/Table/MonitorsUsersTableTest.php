@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\MonitorsTable;
+use App\Model\Table\MonitorsUsersTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\MonitorsTable Test Case
+ * App\Model\Table\MonitorsUsersTable Test Case
  */
-class MonitorsTableTest extends TestCase
+class MonitorsUsersTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\MonitorsTable
+     * @var \App\Model\Table\MonitorsUsersTable
      */
-    public $Monitors;
+    public $MonitorsUsers;
 
     /**
      * Fixtures
@@ -24,6 +24,7 @@ class MonitorsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
+        'app.monitors_users',
         'app.monitors',
         'app.users'
     ];
@@ -36,8 +37,8 @@ class MonitorsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('Monitors') ? [] : ['className' => MonitorsTable::class];
-        $this->Monitors = TableRegistry::getTableLocator()->get('Monitors', $config);
+        $config = TableRegistry::getTableLocator()->exists('MonitorsUsers') ? [] : ['className' => MonitorsUsersTable::class];
+        $this->MonitorsUsers = TableRegistry::getTableLocator()->get('MonitorsUsers', $config);
     }
 
     /**
@@ -47,7 +48,7 @@ class MonitorsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->Monitors);
+        unset($this->MonitorsUsers);
 
         parent::tearDown();
     }

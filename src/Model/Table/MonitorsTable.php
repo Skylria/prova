@@ -9,7 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Monitors Model
  *
- * @property \App\Model\Table\StudentsTable|\Cake\ORM\Association\BelongsToMany $Students
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsToMany $Users
  *
  * @method \App\Model\Entity\Monitor get($primaryKey, $options = [])
  * @method \App\Model\Entity\Monitor newEntity($data = null, array $options = [])
@@ -19,8 +20,6 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Monitor patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \App\Model\Entity\Monitor[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Monitor findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class MonitorsTable extends Table
 {
@@ -39,12 +38,14 @@ class MonitorsTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->addBehavior('Timestamp');
-
-        $this->belongsToMany('Students', [
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsToMany('Users', [
             'foreignKey' => 'monitor_id',
-            'targetForeignKey' => 'student_id',
-            'joinTable' => 'monitors_students'
+            'targetForeignKey' => 'user_id',
+            'joinTable' => 'monitors_users'
         ]);
     }
 
@@ -61,39 +62,15 @@ class MonitorsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('name')
-            ->maxLength('name', 50)
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
-
-        $validator
             ->email('email')
             ->requirePresence('email', 'create')
             ->notEmpty('email');
-
-        $validator
-            ->scalar('username')
-            ->maxLength('username', 50)
-            ->requirePresence('username', 'create')
-            ->notEmpty('username');
-
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 30)
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
 
         $validator
             ->scalar('discipline')
             ->maxLength('discipline', 50)
             ->requirePresence('discipline', 'create')
             ->notEmpty('discipline');
-
-        $validator
-            ->scalar('role')
-            ->maxLength('role', 20)
-            ->requirePresence('role', 'create')
-            ->notEmpty('role');
 
         return $validator;
     }
@@ -108,7 +85,7 @@ class MonitorsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;
     }

@@ -35,7 +35,7 @@ class MonitorsController extends AppController
     public function view($id = null)
     {
         $monitor = $this->Monitors->get($id, [
-            'contain' => ['Students']
+            'contain' => ['Users']
         ]);
 
         $this->set('monitor', $monitor);
@@ -58,8 +58,8 @@ class MonitorsController extends AppController
             }
             $this->Flash->error(__('The monitor could not be saved. Please, try again.'));
         }
-        $students = $this->Monitors->Students->find('list', ['limit' => 200]);
-        $this->set(compact('monitor', 'students'));
+        $users = $this->Monitors->Users->find('list', ['limit' => 200]);
+        $this->set(compact('monitor', 'users'));
     }
 
     /**
@@ -72,7 +72,7 @@ class MonitorsController extends AppController
     public function edit($id = null)
     {
         $monitor = $this->Monitors->get($id, [
-            'contain' => ['Students']
+            'contain' => ['Users']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $monitor = $this->Monitors->patchEntity($monitor, $this->request->getData());
@@ -83,8 +83,8 @@ class MonitorsController extends AppController
             }
             $this->Flash->error(__('The monitor could not be saved. Please, try again.'));
         }
-        $students = $this->Monitors->Students->find('list', ['limit' => 200]);
-        $this->set(compact('monitor', 'students'));
+        $users = $this->Monitors->Users->find('list', ['limit' => 200]);
+        $this->set(compact('monitor', 'users'));
     }
 
     /**

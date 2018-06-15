@@ -4,16 +4,21 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * User Entity
+ * MonitorsUser Entity
  *
  * @property int $id
- * @property string $username
- * @property string $password
- * @property string $role
+ * @property int $monitor_id
+ * @property int $user_id
+ * @property \Cake\I18n\FrozenTime $start_time
+ * @property \Cake\I18n\FrozenTime $end_time
+ * @property string $status
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\Monitor $monitor
+ * @property \App\Model\Entity\User $user
  */
-class User extends Entity
+class MonitorsUser extends Entity
 {
 
     /**
@@ -26,15 +31,14 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-    ];
-
-    /**
-     * Fields that are excluded from JSON versions of the entity.
-     *
-     * @var array
-     */
-    protected $_hidden = [
-        'password'
+        'monitor_id' => true,
+        'user_id' => true,
+        'start_time' => true,
+        'end_time' => true,
+        'status' => true,
+        'created' => true,
+        'modified' => true,
+        'monitor' => true,
+        'user' => true
     ];
 }
