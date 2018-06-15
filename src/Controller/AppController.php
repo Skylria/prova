@@ -46,10 +46,37 @@ class AppController extends Controller
         ]);
         $this->loadComponent('Flash');
 
+        $this->loadComponent('Student', [
+            'authorize' => ['Controller'],
+            'loginRedirect' => [
+                'controller' => 'MonitorsStudents',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+        ]);
+
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
     }
+
+    public function beforeFilter(Event $event) {
+        $this->Student->allow(['index', 'view', 'display']);
+    }
+
+    public function isAuthorized($user) {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 'monitor') {
+            return true;
+        }
+        // Default deny
+        return false;
+    }
+
 }
