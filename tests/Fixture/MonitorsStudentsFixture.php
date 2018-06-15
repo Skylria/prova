@@ -26,8 +26,14 @@ class MonitorsStudentsFixture extends TestFixture
         'role' => ['type' => 'string', 'length' => 20, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        '_indexes' => [
+            'monitor_id' => ['type' => 'index', 'columns' => ['monitor_id'], 'length' => []],
+            'student_id' => ['type' => 'index', 'columns' => ['student_id'], 'length' => []],
+        ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+            'monitors_students_ibfk_1' => ['type' => 'foreign', 'columns' => ['monitor_id'], 'references' => ['monitors', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'monitors_students_ibfk_2' => ['type' => 'foreign', 'columns' => ['student_id'], 'references' => ['students', 'id'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -48,12 +54,12 @@ class MonitorsStudentsFixture extends TestFixture
                 'id' => 1,
                 'monitor_id' => 1,
                 'student_id' => 1,
-                'start_time' => '2018-06-11 16:40:44',
-                'end_time' => '2018-06-11 16:40:44',
+                'start_time' => '2018-06-15 12:50:03',
+                'end_time' => '2018-06-15 12:50:03',
                 'status' => 'Lorem ip',
                 'role' => 'Lorem ipsum dolor ',
-                'created' => '2018-06-11 16:40:44',
-                'modified' => '2018-06-11 16:40:44'
+                'created' => '2018-06-15 12:50:03',
+                'modified' => '2018-06-15 12:50:03'
             ],
         ];
         parent::init();

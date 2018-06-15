@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use Cake\Event\Event;
 
 /**
  * Monitors Controller
@@ -11,14 +10,16 @@ use Cake\Event\Event;
  *
  * @method \App\Model\Entity\Monitor[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class MonitorsController extends AppController {
+class MonitorsController extends AppController
+{
 
     /**
      * Index method
      *
      * @return \Cake\Http\Response|void
      */
-    public function index() {
+    public function index()
+    {
         $monitors = $this->paginate($this->Monitors);
 
         $this->set(compact('monitors'));
@@ -31,7 +32,8 @@ class MonitorsController extends AppController {
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null) {
+    public function view($id = null)
+    {
         $monitor = $this->Monitors->get($id, [
             'contain' => ['Students']
         ]);
@@ -44,7 +46,8 @@ class MonitorsController extends AppController {
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add() {
+    public function add()
+    {
         $monitor = $this->Monitors->newEntity();
         if ($this->request->is('post')) {
             $monitor = $this->Monitors->patchEntity($monitor, $this->request->getData());
@@ -66,7 +69,8 @@ class MonitorsController extends AppController {
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         $monitor = $this->Monitors->get($id, [
             'contain' => ['Students']
         ]);
@@ -90,7 +94,8 @@ class MonitorsController extends AppController {
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         $this->request->allowMethod(['post', 'delete']);
         $monitor = $this->Monitors->get($id);
         if ($this->Monitors->delete($monitor)) {
@@ -101,25 +106,4 @@ class MonitorsController extends AppController {
 
         return $this->redirect(['action' => 'index']);
     }
-
-    public function beforeFilter(Event $event) {
-        parent::beforeFilter($event);
-        $this->Monitors->allow(['add', 'logout']);
-    }
-
-    public function login() {
-        if ($this->request->is('post')) {
-            $monitor = $this->Monitors->identify();
-            if ($monitor) {
-                $this->Monitors->setUser($monitor);
-                return $this->redirect($this->Monitors->redirectUrl());
-            }
-            $this->Flash->error(__('Usuário inválido, tente novamente'));
-        }
-    }
-
-    public function logout() {
-        return $this->redirect($this->Monitors->logout());
-    }
-
 }

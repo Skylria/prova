@@ -27,8 +27,7 @@
             echo $this->Form->control('email');
             echo $this->Form->control('username');
             echo $this->Form->control('discipline');
-            echo $this->Form->control('role', [
-                'options' => ['monitors' => 'Monitors', 'students' => 'Students'] ]);
+            echo $this->Form->control('role');
             echo $this->Form->control('students._ids', ['options' => $students]);
         ?>
     </fieldset>

@@ -48,8 +48,8 @@ class StudentsFixture extends TestFixture
                 'email' => 'Lorem ipsum dolor sit amet',
                 'username' => 'Lorem ipsum dolor sit amet',
                 'role' => 'Lorem ipsum dolor ',
-                'created' => '2018-06-11 16:39:41',
-                'modified' => '2018-06-11 16:39:41'
+                'created' => '2018-06-15 12:49:53',
+                'modified' => '2018-06-15 12:49:53'
             ],
         ];
         parent::init();

@@ -50,8 +50,8 @@ class MonitorsFixture extends TestFixture
                 'username' => 'Lorem ipsum dolor sit amet',
                 'discipline' => 'Lorem ipsum dolor sit amet',
                 'role' => 'Lorem ipsum dolor ',
-                'created' => '2018-06-11 16:39:16',
-                'modified' => '2018-06-11 16:39:16'
+                'created' => '2018-06-15 12:49:31',
+                'modified' => '2018-06-15 12:49:31'
             ],
         ];
         parent::init();
