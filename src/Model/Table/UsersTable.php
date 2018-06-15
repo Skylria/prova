@@ -82,7 +82,11 @@ class UsersTable extends Table
             ->requirePresence('role', 'create')
             ->notEmpty('role')
             ->add('role', 'inList', [
+<<<<<<< HEAD
                 'rule' => ['inList', ['monitor', 'users']],
+=======
+                'rule' => ['inList', ['monitor', 'student']],
+>>>>>>> b05926b848a16b9e43a1d56a8aa9c6e270bdc7b9
                 'message' => 'Por favor entre com um papel válido!']);
 
         return $validator;
