@@ -31,6 +31,10 @@
             <td><?= h($student->username) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Password') ?></th>
+            <td><?= h($student->password) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Role') ?></th>
             <td><?= h($student->role) ?></td>
         </tr>
@@ -56,6 +60,7 @@
                 <th scope="col"><?= __('Name') ?></th>
                 <th scope="col"><?= __('Email') ?></th>
                 <th scope="col"><?= __('Username') ?></th>
+                <th scope="col"><?= __('Password') ?></th>
                 <th scope="col"><?= __('Discipline') ?></th>
                 <th scope="col"><?= __('Role') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
@@ -68,6 +73,7 @@
                 <td><?= h($monitors->name) ?></td>
                 <td><?= h($monitors->email) ?></td>
                 <td><?= h($monitors->username) ?></td>
+                <td><?= h($monitors->password) ?></td>
                 <td><?= h($monitors->discipline) ?></td>
                 <td><?= h($monitors->role) ?></td>
                 <td><?= h($monitors->created) ?></td>

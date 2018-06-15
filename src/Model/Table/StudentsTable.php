@@ -78,6 +78,12 @@ class StudentsTable extends Table
             ->notEmpty('username');
 
         $validator
+            ->scalar('password')
+            ->maxLength('password', 30)
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
+
+        $validator
             ->scalar('role')
             ->maxLength('role', 20)
             ->requirePresence('role', 'create')

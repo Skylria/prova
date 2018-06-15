@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property string $email
  * @property string $username
+ * @property string $password
  * @property string $discipline
  * @property string $role
  * @property \Cake\I18n\FrozenTime $created
@@ -33,10 +34,20 @@ class Monitor extends Entity
         'name' => true,
         'email' => true,
         'username' => true,
+        'password' => true,
         'discipline' => true,
         'role' => true,
         'created' => true,
         'modified' => true,
         'students' => true
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var array
+     */
+    protected $_hidden = [
+        'password'
     ];
 }

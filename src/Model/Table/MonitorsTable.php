@@ -78,6 +78,12 @@ class MonitorsTable extends Table
             ->notEmpty('username');
 
         $validator
+            ->scalar('password')
+            ->maxLength('password', 30)
+            ->requirePresence('password', 'create')
+            ->notEmpty('password');
+
+        $validator
             ->scalar('discipline')
             ->maxLength('discipline', 50)
             ->requirePresence('discipline', 'create')

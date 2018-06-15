@@ -21,6 +21,7 @@
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('username') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discipline') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('role') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -35,6 +36,7 @@
                 <td><?= h($monitor->name) ?></td>
                 <td><?= h($monitor->email) ?></td>
                 <td><?= h($monitor->username) ?></td>
+                <td><?= h($monitor->password) ?></td>
                 <td><?= h($monitor->discipline) ?></td>
                 <td><?= h($monitor->role) ?></td>
                 <td><?= h($monitor->created) ?></td>
