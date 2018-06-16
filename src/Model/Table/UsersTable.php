@@ -6,6 +6,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
+
 /**
  * Users Model
  *
@@ -81,26 +82,15 @@ class UsersTable extends Table
             ->maxLength('role', 20)
             ->requirePresence('role', 'create')
             ->notEmpty('role')
-            ->add('role', 'inList', [
-<<<<<<< HEAD
-                'rule' => ['inList', ['monitor', 'users']],
-=======
-                'rule' => ['inList', ['monitor', 'student']],
->>>>>>> b05926b848a16b9e43a1d56a8aa9c6e270bdc7b9
-                'message' => 'Por favor entre com um papel válido!']);
-
+            ->add('role', 'inList', ['rule' => ['inList', ['monitor', 'users']],'rule' => ['inList', ['monitor', 'student']],'message' => 'Por favor entre com um papel válido!'])
+            ->notEmpty('username', 'Usuário é necessário')
+            ->notEmpty('password', 'Senha é necessária')
+            ->notEmpty('role', 'Função é necessária')
+            ->add('role', 'inList', ['rule' => ['inList', ['monitor', 'users']],'message' => 'Por favor informe uma função válida']);
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
+    public function buildRules(RulesChecker $rules){
         $rules->add($rules->isUnique(['username']));
 
         return $rules;

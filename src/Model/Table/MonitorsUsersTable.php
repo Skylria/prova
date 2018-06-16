@@ -97,4 +97,5 @@ class MonitorsUsersTable extends Table
 
         return $rules;
     }
+
 }
