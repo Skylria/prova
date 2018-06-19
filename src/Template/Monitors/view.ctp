@@ -27,10 +27,6 @@
             <td><?= h($monitor->discipline) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($monitor->id) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('User Id') ?></th>
             <td><?= $this->Number->format($monitor->user_id) ?></td>
         </tr>
@@ -40,7 +36,6 @@
         <?php if (!empty($monitor->users)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
-                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Username') ?></th>
                 <th scope="col"><?= __('Password') ?></th>
                 <th scope="col"><?= __('Role') ?></th>

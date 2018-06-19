@@ -33,10 +33,6 @@
             <td><?= h($monitorsUser->status) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($monitorsUser->id) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Start Time') ?></th>
             <td><?= h($monitorsUser->start_time) ?></td>
         </tr>

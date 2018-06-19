@@ -17,7 +17,6 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discipline') ?></th>
@@ -27,7 +26,6 @@
         <tbody>
             <?php foreach ($monitors as $monitor): ?>
             <tr>
-                <td><?= $this->Number->format($monitor->id) ?></td>
                 <td><?= $this->Number->format($monitor->user_id) ?></td>
                 <td><?= h($monitor->email) ?></td>
                 <td><?= h($monitor->discipline) ?></td>
