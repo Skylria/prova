@@ -3,6 +3,8 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Monitor $monitor
  */
+    $loguser = $this->request->getSession()->read("Auth.User");
+
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -27,8 +29,9 @@
             <td><?= h($monitor->discipline) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('User Id') ?></th>
-            <td><?= $this->Number->format($monitor->user_id) ?></td>
+            <th scope="row"><?= __('Username') ?></th>
+            <td scope="col"><?= $loguser['username'] ?></td>
+
         </tr>
     </table>
     <div class="related">

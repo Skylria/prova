@@ -3,7 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Monitor[]|\Cake\Collection\CollectionInterface $monitors
  */
-$loguser = $this->request->getSession()->read("Auth.User");
+    $loguser = $this->request->getSession()->read("Auth.User");
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -18,7 +18,7 @@ $loguser = $this->request->getSession()->read("Auth.User");
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('user_id' , ['options' => $loguser['username']]) ?></th>
+                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discipline') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -27,7 +27,7 @@ $loguser = $this->request->getSession()->read("Auth.User");
         <tbody>
             <?php foreach ($monitors as $monitor): ?>
             <tr>
-                <td><?= $this->Number->format($monitor->user_id) ?></td>
+                <td scope="col"><?= $loguser['username'] ?></td>
                 <td><?= h($monitor->email) ?></td>
                 <td><?= h($monitor->discipline) ?></td>
                 <td class="actions">
