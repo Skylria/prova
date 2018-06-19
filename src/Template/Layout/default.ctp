@@ -48,9 +48,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </div>
     <div class="container">
         <ul class=" nav justify-content-end sticky-top">
-                <li><a class="nav-link" target="_blank" href="home">Logout</a></li>
-        </ul>
+                          
             
+            <li><?= $this->Html->link('Logout',['controller' => 'Users', 'action' => 'logout']) ?></li>
     </div>
     <?= $this->Flash->render() ?>
     
