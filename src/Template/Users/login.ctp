@@ -1,4 +1,4 @@
-<div class="users form">
+<div class="form-group">
 <?= $this->Flash->render('auth') ?>
 <?= $this->Form->create() ?>
 	<fieldset>

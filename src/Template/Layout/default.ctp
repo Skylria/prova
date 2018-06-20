@@ -12,7 +12,6 @@
  * @since         0.10.0
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
@@ -24,38 +23,33 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
-    <?= $this->fetch('meta') ?>
     <?= $this->Html->meta('icon') ?>
 
-    <!-- <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('style.css') ?> -->
-    <!--<?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?> -->
-     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> 
+    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('style.css') ?>
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 </head>
 <body>
+    <nav class="top-bar expanded" data-topbar role="navigation">
+        <ul class="title-area large-3 medium-4 columns">
+            <li class="name">
+                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+            </li>
+        </ul>
+        <div class="top-bar-section">
+            <ul class="right">
+                 <li><?= $this->Html->link('Logout',['controller' => 'Users', 'action' => 'logout']) ?></li>
 
-    <div class="container-fluid">
-    <br>
-  <h3 class="border-bottom">Users</h3>
-    </div>
-    <div class="container">
-        <ul class=" nav justify-content-end sticky-top">
-                          
-            
-            <li><?= $this->Html->link('Logout',['controller' => 'Users', 'action' => 'logout']) ?></li>
-    </div>
+            </ul>
+        </div>
+    </nav>
     <?= $this->Flash->render() ?>
-    
+    <div class="container clearfix">
         <?= $this->fetch('content') ?>
-    
+    </div>
     <footer>
     </footer>
 </body>
