@@ -86,7 +86,7 @@ class UsersTable extends Table
             ->notEmpty('username', 'Usuário é necessário')
             ->notEmpty('password', 'Senha é necessária')
             ->notEmpty('role', 'Função é necessária')
-            ->add('role', 'inList', ['rule' => ['inList', ['monitor', 'users']],'message' => 'Por favor informe uma função válida']);
+            ->add('role', 'inList', ['rule' => ['inList', ['monitor', 'student']],'message' => 'Por favor informe uma função válida']);
         return $validator;
     }
 

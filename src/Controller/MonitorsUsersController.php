@@ -23,6 +23,18 @@ class MonitorsUsersController extends AppController
         $this->paginate = [
             'contain' => ['Monitors', 'Users']
         ];
+        $usuarioLogado ...
+        if ($usuarioLogado->role  ==  monitor){
+            select o monitor que tem monitor_id == $usuarioLogado.id
+            $monitor_logado = $this->MonitorsUsers->Monitor->get($usuarioLogado.id)
+            $monitor_logado 
+            $monitorsUsers = $this->paginate($this->MonitorsUsers->find()->where('monitor_id' == $monitor_logado.id));
+        }
+
+        if ($usuarioLogado->role  ==  student){
+             
+            $monitorsUsers = $this->paginate($this->MonitorsUsers->find()->where('user_id' == $usuarioLogado.id));
+        }
         $monitorsUsers = $this->paginate($this->MonitorsUsers);
 
         $this->set(compact('monitorsUsers'));
@@ -54,6 +66,8 @@ class MonitorsUsersController extends AppController
         $monitorsUser = $this->MonitorsUsers->newEntity();
         if ($this->request->is('post')) {
             $monitorsUser = $this->MonitorsUsers->patchEntity($monitorsUser, $this->request->getData());
+            // $monitorsUser['status'] = 'none'
+            // $monitorsUser['user_id'] = usuario logado...
             if ($this->MonitorsUsers->save($monitorsUser)) {
                 $this->Flash->success(__('The monitors user has been saved.'));
 
@@ -61,7 +75,9 @@ class MonitorsUsersController extends AppController
             }
             $this->Flash->error(__('The monitors user could not be saved. Please, try again.'));
         }
-        $monitors = $this->MonitorsUsers->Monitors->find('list', ['limit' => 200]);
+        // ->contain(['Tags'])
+        $monitors = $this->MonitorsUsers->Monitors->find()->contain(['Users']);
+        // $monitors = $this->MonitorsUsers->Users->find()->where();
         $users = $this->MonitorsUsers->Users->find('list', ['limit' => 200]);
         $this->set(compact('monitorsUser', 'monitors', 'users'));
     }
