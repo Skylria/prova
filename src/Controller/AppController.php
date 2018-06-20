@@ -57,6 +57,7 @@ class AppController extends Controller
                 'action' => 'display',
                 'home'
             ]
+
         ]);
 
         /*

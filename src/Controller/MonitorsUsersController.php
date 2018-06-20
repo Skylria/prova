@@ -54,6 +54,7 @@ class MonitorsUsersController extends AppController
         $monitorsUser = $this->MonitorsUsers->newEntity();
         if ($this->request->is('post')) {
             $monitorsUser = $this->MonitorsUsers->patchEntity($monitorsUser, $this->request->getData());
+            $monitorsUser->user_id = $this->Auth->user('id');
             if ($this->MonitorsUsers->save($monitorsUser)) {
                 $this->Flash->success(__('The monitors user has been saved.'));
 
@@ -111,4 +112,19 @@ class MonitorsUsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user) {
+        if ($this->request->action === 'add') {
+            return true;
+        }
+        if (in_array($this->request->action, ['edit', 'delete'])) {
+            $monitorsUserId = (int)$this->request->params['pass'][0];
+            if ($this->MonitorsUsers->isOwnedBy($monitorsUserId, $user['id'])) {
+                return true;
+            }
+        }
+        return parent::isAuthorized($user);
+    }
+
+
 }

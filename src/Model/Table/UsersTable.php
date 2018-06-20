@@ -85,7 +85,10 @@ class UsersTable extends Table
             ->scalar('role')
             ->maxLength('role', 20)
             ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->notEmpty('role')
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['monitor', 'estudante']],
+                'message' => 'Por favor entre com um papel válido!']);
 
         return $validator;
     }

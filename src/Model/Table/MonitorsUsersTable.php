@@ -95,4 +95,9 @@ class MonitorsUsersTable extends Table
 
         return $rules;
     }
+
+    public function isOwnedBy($monitorsUserId, $userId) {
+        return $this->exists(['id' => $monitorsUserId, 'user_id' => $userId]);
+    }
+
 }
