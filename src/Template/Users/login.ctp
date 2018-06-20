@@ -5,7 +5,6 @@
 		<legend><?= __('Por favor, entre com seu usuário e senha:') ?></legend>
 		<?= $this->Form->control('username') ?>
 		<?= $this->Form->control('password') ?>
-		<?= $this->Form->control('email') ?>
 	</fieldset>
 <?= $this->Form->button(__('Login')); ?>
 <?= $this->Form->end() ?>

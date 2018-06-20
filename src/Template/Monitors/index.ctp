@@ -3,7 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Monitor[]|\Cake\Collection\CollectionInterface $monitors
  */
-$this->assign('title', 'Monitores');
+$this->assign('title', 'Monitors');
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -14,7 +14,7 @@ $this->assign('title', 'Monitores');
     </ul>
 </nav>
 <div class="monitors index large-9 medium-8 columns content">
-    <h3><?= __('Monitores') ?></h3>
+    <h3><?= __('Monitors') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -29,7 +29,6 @@ $this->assign('title', 'Monitores');
             <?php foreach ($monitors as $monitor): ?>
             <tr>
                 <td><?= $this->Number->format($monitor->id) ?></td>
-                <td><?= $this->Number->format($monitor->user_id) ?></td>
                 <td><?= h($monitor->email) ?></td>
                 <td><?= h($monitor->discipline) ?></td>
                 <td class="actions">

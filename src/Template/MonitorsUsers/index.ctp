@@ -3,12 +3,12 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\MonitorsUser[]|\Cake\Collection\CollectionInterface $monitorsUsers
  */
-$this->assign('title', 'Agendamentos!');
+$this->assign('title', 'Appointments');
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Monitors User'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('New Appointments'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Monitors'), ['controller' => 'Monitors', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Monitor'), ['controller' => 'Monitors', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
@@ -16,7 +16,7 @@ $this->assign('title', 'Agendamentos!');
     </ul>
 </nav>
 <div class="monitorsUsers index large-9 medium-8 columns content">
-    <h3><?= __('Agendamentos') ?></h3>
+    <h3><?= __('Appointments') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
