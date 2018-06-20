@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Mailer\Email;
 
 /**
  * Users Controller
@@ -53,6 +54,11 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
+                $email = new Email('default');
+                $email->$user(['testezerozerosete@gmail.com' => 'prova web2'])
+                ->to('email')
+                ->subject('Assunto')
+                ->send('Bem vindo usuario salvo com sucesso');
 
                 return $this->redirect(['action' => 'index']);
             }
