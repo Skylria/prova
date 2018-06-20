@@ -6,12 +6,11 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-
 /**
  * Users Model
  *
- * @property |\Cake\ORM\Association\HasMany $Monitors
- * @property |\Cake\ORM\Association\BelongsToMany $Monitors
+ * @property \App\Model\Table\MonitorsTable|\Cake\ORM\Association\HasMany $Monitors
+ * @property \App\Model\Table\MonitorsTable|\Cake\ORM\Association\BelongsToMany $Monitors
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -78,20 +77,30 @@ class UsersTable extends Table
             ->notEmpty('password');
 
         $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmpty('email');
+
+        $validator
             ->scalar('role')
             ->maxLength('role', 20)
             ->requirePresence('role', 'create')
-            ->notEmpty('role')
-            ->add('role', 'inList', ['rule' => ['inList', ['monitor', 'users']],'rule' => ['inList', ['monitor', 'student']],'message' => 'Por favor entre com um papel válido!'])
-            ->notEmpty('username', 'Usuário é necessário')
-            ->notEmpty('password', 'Senha é necessária')
-            ->notEmpty('role', 'Função é necessária')
-            ->add('role', 'inList', ['rule' => ['inList', ['monitor', 'student']],'message' => 'Por favor informe uma função válida']);
+            ->notEmpty('role');
+
         return $validator;
     }
 
-    public function buildRules(RulesChecker $rules){
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
         $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->isUnique(['email']));
 
         return $rules;
     }

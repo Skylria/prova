@@ -76,9 +76,7 @@ class MonitorsUsersTable extends Table
 
         $validator
             ->scalar('status')
-            ->maxLength('status', 10)
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
+            ->allowEmpty('status');
 
         return $validator;
     }
@@ -97,5 +95,4 @@ class MonitorsUsersTable extends Table
 
         return $rules;
     }
-
 }

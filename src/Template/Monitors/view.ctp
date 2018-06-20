@@ -3,8 +3,6 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Monitor $monitor
  */
-    $loguser = $this->request->getSession()->read("Auth.User");
-
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -29,9 +27,12 @@
             <td><?= h($monitor->discipline) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Username') ?></th>
-            <td scope="col"><?= $loguser['username'] ?></td>
-
+            <th scope="row"><?= __('Id') ?></th>
+            <td><?= $this->Number->format($monitor->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('User Id') ?></th>
+            <td><?= $this->Number->format($monitor->user_id) ?></td>
         </tr>
     </table>
     <div class="related">
@@ -39,8 +40,10 @@
         <?php if (!empty($monitor->users)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
+                <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Username') ?></th>
                 <th scope="col"><?= __('Password') ?></th>
+                <th scope="col"><?= __('Email') ?></th>
                 <th scope="col"><?= __('Role') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
@@ -51,6 +54,7 @@
                 <td><?= h($users->id) ?></td>
                 <td><?= h($users->username) ?></td>
                 <td><?= h($users->password) ?></td>
+                <td><?= h($users->email) ?></td>
                 <td><?= h($users->role) ?></td>
                 <td><?= h($users->created) ?></td>
                 <td><?= h($users->modified) ?></td>

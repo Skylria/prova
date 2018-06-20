@@ -19,8 +19,8 @@
     <fieldset>
         <legend><?= __('Add Monitors User') ?></legend>
         <?php
-            echo $this->Form->control('monitor_id', ['options' => $monitors->users]);
-            // echo $this->Form->control('user_id', ['options' => $users]);
+            echo $this->Form->control('monitor_id', ['options' => $monitors]);
+            echo $this->Form->control('user_id', ['options' => $users]);
             echo $this->Form->control('start_time');
             echo $this->Form->control('end_time');
             echo $this->Form->control('status');

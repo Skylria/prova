@@ -2,17 +2,19 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
-use Cake\Event\Event;
-use Cake\Auth\DefaultPasswordHasher;
+
 /**
  * User Entity
  *
  * @property int $id
  * @property string $username
  * @property string $password
+ * @property string $email
  * @property string $role
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ *
+ * @property \App\Model\Entity\Monitor[] $monitors
  */
 class User extends Entity
 {
@@ -27,7 +29,13 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
+        'username' => true,
+        'password' => true,
+        'email' => true,
+        'role' => true,
+        'created' => true,
+        'modified' => true,
+        'monitors' => true
     ];
 
     /**
@@ -38,8 +46,4 @@ class User extends Entity
     protected $_hidden = [
         'password'
     ];
-protected function _setPassword($password)
-{
-return (new DefaultPasswordHasher)->hash($password);
-}
 }

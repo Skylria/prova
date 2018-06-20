@@ -22,7 +22,7 @@ class MonitorsUsersFixture extends TestFixture
         'user_id' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'start_time' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'end_time' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'status' => ['type' => 'string', 'length' => 10, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'status' => ['type' => 'string', 'length' => null, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
@@ -53,11 +53,11 @@ class MonitorsUsersFixture extends TestFixture
                 'id' => 1,
                 'monitor_id' => 1,
                 'user_id' => 1,
-                'start_time' => '2018-06-15 18:43:02',
-                'end_time' => '2018-06-15 18:43:02',
-                'status' => 'Lorem ip',
-                'created' => '2018-06-15 18:43:02',
-                'modified' => '2018-06-15 18:43:02'
+                'start_time' => '2018-06-20 21:32:43',
+                'end_time' => '2018-06-20 21:32:43',
+                'status' => 'Lorem ipsum dolor sit amet',
+                'created' => '2018-06-20 21:32:43',
+                'modified' => '2018-06-20 21:32:43'
             ],
         ];
         parent::init();
