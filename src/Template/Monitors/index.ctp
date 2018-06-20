@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Monitor[]|\Cake\Collection\CollectionInterface $monitors
  */
+$this->assign('title', 'Monitores');
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -13,11 +14,11 @@
     </ul>
 </nav>
 <div class="monitors index large-9 medium-8 columns content">
-    <h3><?= __('Monitors') ?></h3>
+    <h3><?= __('Monitores') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('discipline') ?></th>
